@@ -1,0 +1,60 @@
+#defining the abstract class
+from abc import ABC, abstractmethod
+
+class Vehicle:
+
+    @abstractmethod
+    def paint(self, colour_obj):
+        pass
+
+
+class Sedan(Vehicle):
+    def __init__(self, colour_obj):
+        self.colour_obj = colour_obj
+        self.car_type = "Sedan"
+    
+    def paint(self):
+        print(f"painting the color: {self.colour_obj.paint_colour()} to {self.car_type}")
+
+
+class SUV(Vehicle):
+    def __init__(self, colour_obj):
+        self.colour_obj = colour_obj
+        self.car_type = "SUV"
+    
+    def paint(self):
+        print(f"painting the color: {self.colour_obj.paint_colour()} to {self.car_type}")
+
+
+class Color:
+    def paint_colour(self):
+        pass
+
+
+class RedColor(Color):
+    def __init__(self):
+        self.color = "Red"
+    
+    def paint_colour(self):
+        return self.color
+
+
+class BlueColor(Color):
+    def __init__(self):
+        self.color = "Blue"
+    
+    def paint_colour(self):
+        return self.color
+
+
+
+if __name__ == "__main__":
+
+    blue_color = BlueColor()
+    red_color = RedColor()
+
+    red_suv = SUV(red_color)
+    blue_suv = SUV(blue_color)
+
+    red_suv.paint()
+    blue_suv.paint()
